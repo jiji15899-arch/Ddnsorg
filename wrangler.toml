@@ -1,18 +1,15 @@
+# Cloudflare Pages 배포 설정
+# 제작: 아백 (아로스)
+# 생성일: 2025-12-27
+
 name = "free-domain-service"
-main = "worker.js"
-compatibility_date = "2024-01-01"
+compatibility_date = "2025-12-27"
 
-# KV 네임스페이스 (선택사항 - 도메인 정보 저장용)
-kv_namespaces = [
-    { binding = "DOMAINS_KV", id = "your-kv-namespace-id" }
-]
+[assets]
+directory = "."
+html_handling = "auto-trailing-slash"
 
-# 환경 변수는 Cloudflare 대시보드에서 설정하세요
-# 또는 wrangler secret 명령어 사용:
-# wrangler secret put CLOUDFLARE_API_TOKEN
-# wrangler secret put CLOUDFLARE_ZONE_ID
-# wrangler secret put DOMAIN_EXTENSION
-
-[vars]
-# 비민감 변수는 여기에 설정 가능
-# DOMAIN_EXTENSION = "your-domain.com"
+# 404 페이지 설정
+[[assets.fallback_routes]]
+pattern = "/*"
+destination = "/index.html"
