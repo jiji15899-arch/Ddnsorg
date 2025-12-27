@@ -1,0 +1,18 @@
+name = "free-domain-service"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+# KV 네임스페이스 (선택사항 - 도메인 정보 저장용)
+kv_namespaces = [
+    { binding = "DOMAINS_KV", id = "your-kv-namespace-id" }
+]
+
+# 환경 변수는 Cloudflare 대시보드에서 설정하세요
+# 또는 wrangler secret 명령어 사용:
+# wrangler secret put CLOUDFLARE_API_TOKEN
+# wrangler secret put CLOUDFLARE_ZONE_ID
+# wrangler secret put DOMAIN_EXTENSION
+
+[vars]
+# 비민감 변수는 여기에 설정 가능
+# DOMAIN_EXTENSION = "your-domain.com"
